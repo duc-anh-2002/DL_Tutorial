@@ -14,7 +14,8 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 # Load data từ file csv
-data = pd.read_csv('dataset.csv').values
+url = "D:\CS\DL_Tutorial\L2"
+data = pd.read_csv(url + '\dataset.csv').values
 N, d = data.shape
 x = data[:, 0:d-1].reshape(-1, d-1)
 y = data[:, 2].reshape(-1, 1)
@@ -28,7 +29,7 @@ plt.scatter(x_tu_choi[:, 0], x_tu_choi[:, 1], c='blue', edgecolors='none', s=30,
 plt.legend(loc=1)
 plt.xlabel('mức lương (triệu)')
 plt.ylabel('kinh nghiệm (năm)')
-
+# plt.show()
 # Thêm cột 1 vào dữ liệu x
 x = np.hstack((np.ones((N, 1)), x))
 
@@ -40,8 +41,7 @@ cost = np.zeros((numOfIteration,1))
 learning_rate = 0.01
 
 for i in range(1, numOfIteration):
-    
-	 # Tính giá trị dự đoán
+	# Tính giá trị dự đoán
     y_predict = sigmoid(np.dot(x, w))
     cost[i] = -np.sum(np.multiply(y, np.log(y_predict)) + np.multiply(1-y, np.log(1-y_predict)))
     # Gradient descent
@@ -50,5 +50,7 @@ for i in range(1, numOfIteration):
 
 # Vẽ đường phân cách.
 t = 0.5
+print(w)
+# plt.plot((4,10), (w[0] + 4*w[1], w[0] + 10*w[1]))
 plt.plot((4, 10),(-(w[0]+4*w[1]+ np.log(1/t-1))/w[2], -(w[0] + 10*w[1]+ np.log(1/t-1))/w[2]), 'g')
 plt.show()
