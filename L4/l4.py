@@ -36,7 +36,7 @@ class NeuralNetwork:
       for i in range(0, len(layers)-1):
             w_ = np.random.randn(layers[i], layers[i+1])
             b_ = np.zeros((layers[i+1], 1))
-            self.W.append(w_/layers[i])
+            self.W.append(w_/(layers[i])) 
             self.b.append(b_)
             
     
@@ -46,9 +46,9 @@ class NeuralNetwork:
     
 	
 	# Train mô hình với dữ liệu
+    
     def fit_partial(self, x, y):
         A = [x]
-        
         # quá trình feedforward
         out = A[-1]
         for i in range(0, len(self.layers) - 1):
@@ -57,6 +57,7 @@ class NeuralNetwork:
         
         # quá trình backpropagation
         y = y.reshape(-1, 1)
+        # print(A[-1])
         dA = [-(y/A[-1] - (1-y)/(1-A[-1]))]
         dW = []
         db = []
@@ -97,10 +98,15 @@ class NeuralNetwork:
         return -(np.sum(y*np.log(y_predict) + (1-y)*np.log(1-y_predict))) 
         
 # Dataset bài 2
-data = pd.read_csv('dataset.csv').values
+url = "D:\CS\DL_Tutorial\L4"
+# data = pd.read_csv(url + '/xor.csv').values
+data = pd.read_csv(url + '\dataset.csv').values
+
 N, d = data.shape
 X = data[:, 0:d-1].reshape(-1, d-1)
 y = data[:, 2].reshape(-1, 1)
-
 p = NeuralNetwork([X.shape[1], 2, 1], 0.1)
 p.fit(X, y, 10000, 100)
+print(p.__repr__)
+
+# print(p.predict([1,2]))
