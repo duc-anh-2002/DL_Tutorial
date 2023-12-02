@@ -17,16 +17,17 @@ def sigmoid(x):
 plt.scatter([1], [1], c='red', edgecolors='none', s=30, label='cho vay')
 plt.scatter([0, 0, 1], [0, 1, 0], c='blue', edgecolors='none', s=30, label='từ chối')
 plt.plot([0, 1.5], [1.5, 0], 'g')
-
+# plt.show()
 # Toán tử OR
 plt.scatter([0, 1, 1], [1, 0, 1], c='red', edgecolors='none', s=30, label='cho vay')
 plt.scatter([0], [0], c='blue', edgecolors='none', s=30, label='từ chối')
 plt.plot([-0.5, 1.5], [1, -1], 'g')
 plt.xlabel('x1')
 plt.ylabel('x2')
-
-# Toán tử XOR
+plt.show()
+# # Toán tử XOR
 plt.scatter([1, 0], [0, 1], c='red', edgecolors='none', s=30, label='cho vay')
 plt.scatter([1, 0], [1, 0], c='blue', edgecolors='none', s=30, label='từ chối')
 plt.xlabel('x1')
 plt.ylabel('x2')
+# plt.show()
