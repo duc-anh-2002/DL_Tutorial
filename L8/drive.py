@@ -14,7 +14,8 @@ from io import BytesIO
 from keras.models import load_model
 
 import utils
-
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 #initialize our server
 sio = socketio.Server()
 #our flask (web) app
